@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventarioLibros", "InventarioLibros.csproj", "{A68D4561-3C96-439A-BF10-8C3DA215B696}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TareasAPI", "..\TareasAPI\TareasAPI.csproj", "{49D9EFBA-322D-49C2-BA3B-9A72742F2EF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A68D4561-3C96-439A-BF10-8C3DA215B696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A68D4561-3C96-439A-BF10-8C3DA215B696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A68D4561-3C96-439A-BF10-8C3DA215B696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D9EFBA-322D-49C2-BA3B-9A72742F2EF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D9EFBA-322D-49C2-BA3B-9A72742F2EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D9EFBA-322D-49C2-BA3B-9A72742F2EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D9EFBA-322D-49C2-BA3B-9A72742F2EF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
