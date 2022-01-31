@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -77,5 +78,56 @@ namespace InventarioLibros
 
             }
         }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+                //Con ADO.NET
+                // Create the connection.
+                using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.BibliotecaConnectionString))
+                {
+                    // Create the SqlCommand object and identify it as a stored procedure.
+                    using (SqlCommand sqlCommand = new SqlCommand("Biblioteca.dbo.spUpdateLibro", connection))
+                    {
+                        sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                        // Add parameters for the stored procedure.
+                        sqlCommand.Parameters.Add(new SqlParameter("@IdLibro", SqlDbType.Int));
+                        sqlCommand.Parameters["@IdLibro"].Value = Convert.ToInt32(this.idLibroTextBox.Text);
+
+                        sqlCommand.Parameters.Add(new SqlParameter("@IdCategoria", SqlDbType.Int));
+                        sqlCommand.Parameters["@IdCategoria"].Value = Convert.ToInt32(this.idCategoriaTextBox.Text);
+
+                        sqlCommand.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+                        sqlCommand.Parameters["@Nombre"].Value = this.nombreTextBox.Text;
+
+                        sqlCommand.Parameters.Add(new SqlParameter("@Autor", SqlDbType.VarChar));
+                        sqlCommand.Parameters["@Autor"].Value = this.autorTextBox.Text;
+
+                        sqlCommand.Parameters.Add(new SqlParameter("@FechaPublicacion", SqlDbType.Date));
+                        sqlCommand.Parameters["@FechaPublicacion"].Value = this.fechaPublicacionDateTimePicker.Value;
+
+
+                        try
+                        {
+                            // Open the connection.
+                            connection.Open();
+
+                            // Run the command to execute the stored procedure.
+                            sqlCommand.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("No se h podido modificar el libro." + ex.Message);
+                        }
+                        finally
+                        {
+                            // Close connection.
+                            connection.Close();
+                        }
+                    }
+                }
+            }
+        
     }
+    
 }

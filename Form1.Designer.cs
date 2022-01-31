@@ -30,26 +30,33 @@ namespace InventarioLibros
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.Label idLibroLabel;
             System.Windows.Forms.Label idCategoriaLabel;
             System.Windows.Forms.Label nombreLabel;
             System.Windows.Forms.Label autorLabel;
             System.Windows.Forms.Label fechaPublicacionLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.libroBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.libroBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bibliotecaDataSet = new InventarioLibros.BibliotecaDataSet();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.libroBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.libroDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idLibroTextBox = new System.Windows.Forms.TextBox();
             this.idCategoriaTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
@@ -59,13 +66,6 @@ namespace InventarioLibros
             this.autorToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.autorToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.fillByAutorToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.libroBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bibliotecaDataSet = new InventarioLibros.BibliotecaDataSet();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.libroTableAdapter = new InventarioLibros.BibliotecaDataSetTableAdapters.LibroTableAdapter();
             this.tableAdapterManager = new InventarioLibros.BibliotecaDataSetTableAdapters.TableAdapterManager();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -77,11 +77,56 @@ namespace InventarioLibros
             fechaPublicacionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.libroBindingNavigator)).BeginInit();
             this.libroBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.libroDataGridView)).BeginInit();
-            this.fillByAutorToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.libroBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.libroDataGridView)).BeginInit();
+            this.fillByAutorToolStrip.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // idLibroLabel
+            // 
+            idLibroLabel.AutoSize = true;
+            idLibroLabel.Location = new System.Drawing.Point(72, 74);
+            idLibroLabel.Name = "idLibroLabel";
+            idLibroLabel.Size = new System.Drawing.Size(89, 25);
+            idLibroLabel.TabIndex = 2;
+            idLibroLabel.Text = "Id Libro:";
+            // 
+            // idCategoriaLabel
+            // 
+            idCategoriaLabel.AutoSize = true;
+            idCategoriaLabel.Location = new System.Drawing.Point(72, 111);
+            idCategoriaLabel.Name = "idCategoriaLabel";
+            idCategoriaLabel.Size = new System.Drawing.Size(134, 25);
+            idCategoriaLabel.TabIndex = 4;
+            idCategoriaLabel.Text = "Id Categoria:";
+            // 
+            // nombreLabel
+            // 
+            nombreLabel.AutoSize = true;
+            nombreLabel.Location = new System.Drawing.Point(72, 148);
+            nombreLabel.Name = "nombreLabel";
+            nombreLabel.Size = new System.Drawing.Size(93, 25);
+            nombreLabel.TabIndex = 6;
+            nombreLabel.Text = "Nombre:";
+            // 
+            // autorLabel
+            // 
+            autorLabel.AutoSize = true;
+            autorLabel.Location = new System.Drawing.Point(72, 185);
+            autorLabel.Name = "autorLabel";
+            autorLabel.Size = new System.Drawing.Size(69, 25);
+            autorLabel.TabIndex = 8;
+            autorLabel.Text = "Autor:";
+            // 
+            // fechaPublicacionLabel
+            // 
+            fechaPublicacionLabel.AutoSize = true;
+            fechaPublicacionLabel.Location = new System.Drawing.Point(72, 223);
+            fechaPublicacionLabel.Name = "fechaPublicacionLabel";
+            fechaPublicacionLabel.Size = new System.Drawing.Size(195, 25);
+            fechaPublicacionLabel.TabIndex = 10;
+            fechaPublicacionLabel.Text = "Fecha Publicacion:";
             // 
             // libroBindingNavigator
             // 
@@ -114,6 +159,41 @@ namespace InventarioLibros
             this.libroBindingNavigator.Size = new System.Drawing.Size(1385, 42);
             this.libroBindingNavigator.TabIndex = 0;
             this.libroBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(46, 36);
+            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
+            // 
+            // libroBindingSource
+            // 
+            this.libroBindingSource.DataMember = "Libro";
+            this.libroBindingSource.DataSource = this.bibliotecaDataSet;
+            // 
+            // bibliotecaDataSet
+            // 
+            this.bibliotecaDataSet.DataSetName = "BibliotecaDataSet";
+            this.bibliotecaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(76, 36);
+            this.bindingNavigatorCountItem.Text = "de {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(46, 36);
+            this.bindingNavigatorDeleteItem.Text = "Eliminar";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -148,16 +228,9 @@ namespace InventarioLibros
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Posición actual";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(76, 36);
-            this.bindingNavigatorCountItem.Text = "de {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 42);
             // 
             // bindingNavigatorMoveNextItem
@@ -180,26 +253,8 @@ namespace InventarioLibros
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 42);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(46, 36);
-            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(46, 36);
-            this.bindingNavigatorDeleteItem.Text = "Eliminar";
             // 
             // libroBindingNavigatorSaveItem
             // 
@@ -227,134 +282,6 @@ namespace InventarioLibros
             this.libroDataGridView.RowTemplate.Height = 33;
             this.libroDataGridView.Size = new System.Drawing.Size(962, 378);
             this.libroDataGridView.TabIndex = 1;
-            // 
-            // idLibroLabel
-            // 
-            idLibroLabel.AutoSize = true;
-            idLibroLabel.Location = new System.Drawing.Point(72, 74);
-            idLibroLabel.Name = "idLibroLabel";
-            idLibroLabel.Size = new System.Drawing.Size(89, 25);
-            idLibroLabel.TabIndex = 2;
-            idLibroLabel.Text = "Id Libro:";
-            // 
-            // idLibroTextBox
-            // 
-            this.idLibroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libroBindingSource, "IdLibro", true));
-            this.idLibroTextBox.Location = new System.Drawing.Point(273, 71);
-            this.idLibroTextBox.Name = "idLibroTextBox";
-            this.idLibroTextBox.Size = new System.Drawing.Size(200, 31);
-            this.idLibroTextBox.TabIndex = 3;
-            // 
-            // idCategoriaLabel
-            // 
-            idCategoriaLabel.AutoSize = true;
-            idCategoriaLabel.Location = new System.Drawing.Point(72, 111);
-            idCategoriaLabel.Name = "idCategoriaLabel";
-            idCategoriaLabel.Size = new System.Drawing.Size(134, 25);
-            idCategoriaLabel.TabIndex = 4;
-            idCategoriaLabel.Text = "Id Categoria:";
-            // 
-            // idCategoriaTextBox
-            // 
-            this.idCategoriaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libroBindingSource, "IdCategoria", true));
-            this.idCategoriaTextBox.Location = new System.Drawing.Point(273, 108);
-            this.idCategoriaTextBox.Name = "idCategoriaTextBox";
-            this.idCategoriaTextBox.Size = new System.Drawing.Size(200, 31);
-            this.idCategoriaTextBox.TabIndex = 5;
-            // 
-            // nombreLabel
-            // 
-            nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(72, 148);
-            nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(93, 25);
-            nombreLabel.TabIndex = 6;
-            nombreLabel.Text = "Nombre:";
-            // 
-            // nombreTextBox
-            // 
-            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libroBindingSource, "Nombre", true));
-            this.nombreTextBox.Location = new System.Drawing.Point(273, 145);
-            this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(200, 31);
-            this.nombreTextBox.TabIndex = 7;
-            // 
-            // autorLabel
-            // 
-            autorLabel.AutoSize = true;
-            autorLabel.Location = new System.Drawing.Point(72, 185);
-            autorLabel.Name = "autorLabel";
-            autorLabel.Size = new System.Drawing.Size(69, 25);
-            autorLabel.TabIndex = 8;
-            autorLabel.Text = "Autor:";
-            // 
-            // autorTextBox
-            // 
-            this.autorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libroBindingSource, "Autor", true));
-            this.autorTextBox.Location = new System.Drawing.Point(273, 182);
-            this.autorTextBox.Name = "autorTextBox";
-            this.autorTextBox.Size = new System.Drawing.Size(200, 31);
-            this.autorTextBox.TabIndex = 9;
-            // 
-            // fechaPublicacionLabel
-            // 
-            fechaPublicacionLabel.AutoSize = true;
-            fechaPublicacionLabel.Location = new System.Drawing.Point(72, 223);
-            fechaPublicacionLabel.Name = "fechaPublicacionLabel";
-            fechaPublicacionLabel.Size = new System.Drawing.Size(195, 25);
-            fechaPublicacionLabel.TabIndex = 10;
-            fechaPublicacionLabel.Text = "Fecha Publicacion:";
-            // 
-            // fechaPublicacionDateTimePicker
-            // 
-            this.fechaPublicacionDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.libroBindingSource, "FechaPublicacion", true));
-            this.fechaPublicacionDateTimePicker.Location = new System.Drawing.Point(273, 219);
-            this.fechaPublicacionDateTimePicker.Name = "fechaPublicacionDateTimePicker";
-            this.fechaPublicacionDateTimePicker.Size = new System.Drawing.Size(200, 31);
-            this.fechaPublicacionDateTimePicker.TabIndex = 11;
-            // 
-            // fillByAutorToolStrip
-            // 
-            this.fillByAutorToolStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.fillByAutorToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.autorToolStripLabel,
-            this.autorToolStripTextBox,
-            this.fillByAutorToolStripButton});
-            this.fillByAutorToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.fillByAutorToolStrip.Name = "fillByAutorToolStrip";
-            this.fillByAutorToolStrip.Size = new System.Drawing.Size(1385, 42);
-            this.fillByAutorToolStrip.TabIndex = 12;
-            this.fillByAutorToolStrip.Text = "fillByAutorToolStrip";
-            // 
-            // autorToolStripLabel
-            // 
-            this.autorToolStripLabel.Name = "autorToolStripLabel";
-            this.autorToolStripLabel.Size = new System.Drawing.Size(79, 36);
-            this.autorToolStripLabel.Text = "Autor:";
-            // 
-            // autorToolStripTextBox
-            // 
-            this.autorToolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.autorToolStripTextBox.Name = "autorToolStripTextBox";
-            this.autorToolStripTextBox.Size = new System.Drawing.Size(100, 42);
-            // 
-            // fillByAutorToolStripButton
-            // 
-            this.fillByAutorToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillByAutorToolStripButton.Name = "fillByAutorToolStripButton";
-            this.fillByAutorToolStripButton.Size = new System.Drawing.Size(134, 36);
-            this.fillByAutorToolStripButton.Text = "FillByAutor";
-            this.fillByAutorToolStripButton.Click += new System.EventHandler(this.fillByAutorToolStripButton_Click);
-            // 
-            // libroBindingSource
-            // 
-            this.libroBindingSource.DataMember = "Libro";
-            this.libroBindingSource.DataSource = this.bibliotecaDataSet;
-            // 
-            // bibliotecaDataSet
-            // 
-            this.bibliotecaDataSet.DataSetName = "BibliotecaDataSet";
-            this.bibliotecaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -397,6 +324,79 @@ namespace InventarioLibros
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.Width = 200;
             // 
+            // idLibroTextBox
+            // 
+            this.idLibroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libroBindingSource, "IdLibro", true));
+            this.idLibroTextBox.Location = new System.Drawing.Point(273, 71);
+            this.idLibroTextBox.Name = "idLibroTextBox";
+            this.idLibroTextBox.Size = new System.Drawing.Size(200, 31);
+            this.idLibroTextBox.TabIndex = 3;
+            // 
+            // idCategoriaTextBox
+            // 
+            this.idCategoriaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libroBindingSource, "IdCategoria", true));
+            this.idCategoriaTextBox.Location = new System.Drawing.Point(273, 108);
+            this.idCategoriaTextBox.Name = "idCategoriaTextBox";
+            this.idCategoriaTextBox.Size = new System.Drawing.Size(200, 31);
+            this.idCategoriaTextBox.TabIndex = 5;
+            // 
+            // nombreTextBox
+            // 
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libroBindingSource, "Nombre", true));
+            this.nombreTextBox.Location = new System.Drawing.Point(273, 145);
+            this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.Size = new System.Drawing.Size(200, 31);
+            this.nombreTextBox.TabIndex = 7;
+            // 
+            // autorTextBox
+            // 
+            this.autorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libroBindingSource, "Autor", true));
+            this.autorTextBox.Location = new System.Drawing.Point(273, 182);
+            this.autorTextBox.Name = "autorTextBox";
+            this.autorTextBox.Size = new System.Drawing.Size(200, 31);
+            this.autorTextBox.TabIndex = 9;
+            // 
+            // fechaPublicacionDateTimePicker
+            // 
+            this.fechaPublicacionDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.libroBindingSource, "FechaPublicacion", true));
+            this.fechaPublicacionDateTimePicker.Location = new System.Drawing.Point(273, 219);
+            this.fechaPublicacionDateTimePicker.Name = "fechaPublicacionDateTimePicker";
+            this.fechaPublicacionDateTimePicker.Size = new System.Drawing.Size(200, 31);
+            this.fechaPublicacionDateTimePicker.TabIndex = 11;
+            // 
+            // fillByAutorToolStrip
+            // 
+            this.fillByAutorToolStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.fillByAutorToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.autorToolStripLabel,
+            this.autorToolStripTextBox,
+            this.fillByAutorToolStripButton});
+            this.fillByAutorToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.fillByAutorToolStrip.Name = "fillByAutorToolStrip";
+            this.fillByAutorToolStrip.Size = new System.Drawing.Size(1385, 42);
+            this.fillByAutorToolStrip.TabIndex = 12;
+            this.fillByAutorToolStrip.Text = "fillByAutorToolStrip";
+            // 
+            // autorToolStripLabel
+            // 
+            this.autorToolStripLabel.Name = "autorToolStripLabel";
+            this.autorToolStripLabel.Size = new System.Drawing.Size(79, 36);
+            this.autorToolStripLabel.Text = "Autor:";
+            // 
+            // autorToolStripTextBox
+            // 
+            this.autorToolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.autorToolStripTextBox.Name = "autorToolStripTextBox";
+            this.autorToolStripTextBox.Size = new System.Drawing.Size(100, 42);
+            // 
+            // fillByAutorToolStripButton
+            // 
+            this.fillByAutorToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByAutorToolStripButton.Name = "fillByAutorToolStripButton";
+            this.fillByAutorToolStripButton.Size = new System.Drawing.Size(134, 36);
+            this.fillByAutorToolStripButton.Text = "FillByAutor";
+            this.fillByAutorToolStripButton.Click += new System.EventHandler(this.fillByAutorToolStripButton_Click);
+            // 
             // libroTableAdapter
             // 
             this.libroTableAdapter.ClearBeforeFill = true;
@@ -429,6 +429,7 @@ namespace InventarioLibros
             this.btnModify.TabIndex = 14;
             this.btnModify.Text = "Modificar";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // Form1
             // 
@@ -456,11 +457,11 @@ namespace InventarioLibros
             ((System.ComponentModel.ISupportInitialize)(this.libroBindingNavigator)).EndInit();
             this.libroBindingNavigator.ResumeLayout(false);
             this.libroBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.libroBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.libroDataGridView)).EndInit();
             this.fillByAutorToolStrip.ResumeLayout(false);
             this.fillByAutorToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.libroBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
